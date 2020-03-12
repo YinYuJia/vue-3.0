@@ -67,7 +67,8 @@ export default {
                 this.token = res.data.URLToken
                  getChannelList(this.token,'true').then(res => {
                     this.players = res.data.ChannelList
-                    this.shuld(this.players[0])
+                    console.log("this.players",this.players)
+                    this.shuld(this.players[4])
                 })
             })
         },
@@ -79,13 +80,12 @@ export default {
         play() {
             this.loading = true
             streamStart(this.serial,this.code,this.token).then(res => {
-                                console.log("res---",res)
-                                var indexnum=res.data.FLV.indexOf('10000');
-                                 var fivurl=res.data.FLV.substr(indexnum+5);
-                                 console.log("视频---",fivurl)
-                   this.videoUrl = fivurl || ''
-                this.streamID = res.data.StreamID
-                this.loading = false
+                console.log("streamstart",res)
+                    var indexnum = res.data.FLV.indexOf('10000');
+                    var fivurl = res.data.FLV.substr(indexnum + 5);
+                    this.videoUrl = fivurl || ''
+                    this.streamID = res.data.StreamID
+                    this.loading = false
             })
         },
         ptzControl(command) {

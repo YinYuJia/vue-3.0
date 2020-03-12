@@ -129,6 +129,10 @@
                         });
                         marker.addEventListener("click", () => {
                             console.log("---点击---", thePoint)
+                            that.$router.push({
+                                path:"/liveplayer",
+                                query:{}
+                            })
                         });
                         marker.addEventListener("mouseout", function(e) {
                             var label = this.getLabel()

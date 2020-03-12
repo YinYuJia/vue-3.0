@@ -112,9 +112,6 @@ module.exports = {
         target: 'http://115.236.28.77:10000', //
         ws: true,
         changeOrigin: true,
-        pathRewrite: {
-          '^/sms': ''
-        }
       },
     }
   },
