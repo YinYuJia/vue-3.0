@@ -1,6 +1,4 @@
 // eslint-disable-next-line
-import { UserLayout, BasicLayout, RouteView, BlankLayout, PageView } from '@/components/layouts'
-
 
 
 /**
@@ -45,10 +43,5 @@ export const constantRouterMap = [
     path: '/404',
     component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
   },
-
-  {
-    path: '/404',
-    component: () => import(/* webpackChunkName: "fail" */ '@/views/exception/404')
-  }
 ]
 

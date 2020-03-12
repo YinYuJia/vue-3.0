@@ -31,39 +31,20 @@ axios.interceptors.request.use(request => {
 
 // 拦截响应
 axios.interceptors.response.use((response) => {
+  console.log("请求拦截器",response)
     loadingInstance.close();
     // token 已过期，重定向到登录页面
-    // if(response.data.code == 401 ){
-    //     // 系统异常
-    //     Message({
-    //         message: response.data.msg,
-    //         type: 'warning'
-    //       });
-    //       setTimeout(()=>{
-    //         router.push({
-    //            path:"/ddlogin",
-    //            query:{}
-    //         })
-    //       },2000)
-    //     return;
-    // }
-
-    // else if (newRes.code == 1 ) {
-    //     // 业务异常
-    //     if ( newRes.data.enCode !== 1000 ) {
-    //         console.log(newRes.data.msg);
-    //         // this.$router.push("/")
-    //     }
-    //     return;
-    // }else if (newRes.code == 0 ) {
-    //     // 成功   1000
-    //     if (newRes.data.enCode !== 1000 ) {
-    //     // 失败  1001
-    //         console.log(newRes.data.msg);
-    //         return;
-    //     }
-    // }
-    return response
+    
+    if(response.status == 404 ){
+        // 系统异常
+        router.push({
+          path:"/404",
+          query:{}
+       })
+        return response.data;
+    }else {
+      return response.data
+    }
 }, 
 
 axios.adornParams = (params = {}, openDefultParams = true) => {

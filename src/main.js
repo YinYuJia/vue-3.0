@@ -1,14 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store/'
 // mock
 // import './mock'
 import "./../public/rem" //引入rem
 import "../public/base.css"
-import './core/use'
-import bootstrap from './core/bootstrap'
-import '@/permission' // permission control
 import '@/utils/filter' // global filter
 import 'element-ui/lib/theme-chalk/index.css'
 import ElementUI from 'element-ui' //element-ui的全部组件
@@ -39,6 +35,36 @@ Vue.use(BaiduMap,{ ak:'wycygWOMkzZt9XB7wDTQwu49VcssxkFG'})
 Vue.use(VueHighCharts)
 highcharts3d(highcharts)
 Vue.prototype.$echarts = echarts
+ 
+class Url {
+  /**
+   * 传入对象返回url参数
+   * @param {Object} data {a:1}
+   * @returns {string}
+   */
+  getParam(data){
+      let url = '';
+      for(var k in data){
+          let value = data[k] !==undefined ? data[k] : '';
+          url += `&${k}=${encodeURIComponent(value)}`
+      }
+      return url ? url.substring(1) : ''
+  }
+
+  /**
+   * 将url和参数拼接成完整地址
+   * @param {string} url url地址
+   * @param {Json} data json对象
+   * @returns {string}
+   */
+  getUrl(url, data){
+      //看原始url地址中开头是否带?，然后拼接处理好的参数
+      return url += (url.indexOf('?') < 0 ? '?' : '') + this.getParam(data)
+  }
+}
+
+Vue.prototype.$getParmas = new Url();  //get 请求参数序列化  this.$getParmas.getgetUrl(this.$getParmas.getUrl("11111111",{a:1234}))
+
 Vue.config.productionTip = false
 // Vue.prototype.COMMON = global //挂载到Vue实例上面
 Vue.use(ElementUI) //使用elementUI
@@ -50,9 +76,8 @@ console.log("环境变量------",process.env.VUE_APP_SECRET)
 
 new Vue({
   router,
-  store,
   created () {
-    bootstrap()
+
   },
   render: h => h(App)
 }).$mount('#app')

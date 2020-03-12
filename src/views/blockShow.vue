@@ -156,8 +156,8 @@
                 console.log("ParameterMatching1", formatterUrlData)
                 this.$axios.get(formatterUrlData).then((data) => {
                     console.log("---data-返回值--", data)
-                    this.tableData = data.data
-                    this.total = data.data.length
+                    this.tableData = data
+                    this.total = data.length
                 })
             }
         }
@@ -211,7 +211,7 @@
         width: 100%;
         height: 100%;
         min-height: 100vh;
-        background: url('../assets/img-huanjing（1）/bg-nackground.png') no-repeat;
+        background: url('../assets/img-login/bg-nackground.png') no-repeat;
         background-size: 100% 100%;
         position: relative;
         overflow: hidden;
@@ -282,14 +282,14 @@
         border-bottom: none;
     }
     /deep/.is-active {
-        background: url('../assets/img-taizhang/bg-选中.png') no-repeat;
+        background: url('../assets/img-login/bg-selected.png') no-repeat;
         background-size: 100% 100%;
     }
     /deep/.el-tabs__active-bar {
         height: 0;
     }
     /deep/.el-dialog {
-        background: url('../assets/img-TanKuang/bg-TanKuang.png') no-repeat;
+        background: url('../assets/img-login/bg-TanKuang.png') no-repeat;
         background-size: 100% 100%;
         padding-top: 0.3rem;
         padding-left: 0.21rem;

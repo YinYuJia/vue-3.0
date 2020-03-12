@@ -38,16 +38,16 @@
             },
             getStation() { //330206
                 this.$axios.get(`/apiUrl/sw/bl/allList?area=330206`, {}).then((response) => {
-                    console.log("response----百度地图", response.data)
-                    if (response.data.code == 0) {
-                        this.points = response.data.list
+                    console.log("00000",response)
+                    if (response.code == 0) {
+                        this.points = response.list
                         // console.log("1234543", this.points)
                         // 请求点成功后 返回百度地图
                         this.creatBaiDuMap()
                     } else {
                         this.$message({
                             showClose: true,
-                            message: response.data.msg,
+                            message: response.msg,
                             type: 'warning' //error success
                         });
                     }
