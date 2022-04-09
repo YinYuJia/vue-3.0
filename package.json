@@ -28,7 +28,7 @@
     "md5": "^2.2.1",
     "mockjs": "^1.0.1-beta3",
     "mockjs2": "^1.0.7",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "node-sass": "^4.13.0",
     "nprogress": "^0.2.0",
     "postcss-px2rem-exclude": "^0.0.6",
